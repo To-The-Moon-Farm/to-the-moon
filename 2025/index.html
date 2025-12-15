@@ -1,42 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hello World</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        h1 {
-            font-size: 2em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Parrish Family Update 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --max-width: 1000px;
+      --text-color: #222;
+      --bg-color: #fafafa;
+      --muted: #666;
+
+      /* Carousel */
+      --carousel-height: 500px;
+      --carousel-gap: 1rem;
+    }
+
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Base layout */
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin: 1rem 0;
+    }
+
+    .intro {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* Figures */
+    figure {
+      margin: 0 0 2.5rem;
+    }
+
+    figcaption {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      text-align: center;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Images */
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    /*
+    Source - https://stackoverflow.com/a
+    Posted by Temani Afif
+    Retrieved 2025-12-15, License - CC BY-SA 4.0
+    */
+
+    .image-row {
+      display: flex;
+      gap: 5px;
+    }
+    .image-row img {
+      flex: calc(var(--r));
+      min-width: 0;
+    }
+
+
+
+    /* Video embeds */
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #000;
+      margin: .5rem 0;
+    }
+    .video-wrapper.one {
+      aspect-ratio: 6 / 5;
+    }
+    .video-wrapper.two {
+      aspect-ratio: 16 / 9;
+    }
+    .video-wrapper.three {
+      aspect-ratio: 15 / 7;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* =========================
+       PEEK CAROUSEL (CSS ONLY)
+       ========================= */
+
+    .peek-carousel {
+      position: relative;
+      margin: 0 0 2.5rem;
+    }
+
+    /* Horizontal scrolling strip */
+    .carousel-track {
+      display: flex;
+      gap: var(--carousel-gap);
+      overflow-x: auto;
+
+      /* Natural scrolling */
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+
+      padding-bottom: 0.5rem;
+    }
+
+    /* Hide scrollbars by default (mobile-first) */
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel-track {
+      scrollbar-width: none;
+    }
+
+    /* Show horizontal scrollbar on desktop */
+    @media (pointer: fine) {
+      .carousel-track {
+        scrollbar-width: auto; /* Firefox */
+        cursor: ew-resize;
+      }
+
+      .carousel-track::-webkit-scrollbar {
+        display: block;
+        height: 10px;
+      }
+
+      .carousel-track::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .carousel-track::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 6px;
+      }
+
+      .carousel-track::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.45);
+      }
+    }
+
+    /* Individual slide */
+    .carousel-slide {
+      flex: 0 0 auto;
+      height: var(--carousel-height);
+      border-radius: 6px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Image sizing: full height, variable width */
+    .carousel-slide img {
+      height: 100%;
+      width: auto;
+      display: block;
+    }
+
+    /* Subtle right fade hint */
+    .peek-carousel::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 64px;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        rgba(250, 250, 250, 0),
+        var(--bg-color)
+      );
+    }
+
+    /* =========================
+       DESKTOP TYPOGRAPHY POLISH
+       ========================= */
+
+    @media (min-width: 768px) {
+      body {
+        font-size: 1.05rem;
+      }
+
+      main {
+        max-width: 900px;
+      }
+
+      h1 {
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 1.25rem 0;
+        line-height: 1.7;
+      }
+
+      .intro {
+        font-size: 1.1rem;
+        max-width: 75%;
+      }
+
+      figcaption {
+        font-size: 0.85rem;
+        line-height: 1.4;
+      }
+    }
+
+    /* =========================
+       RESPONSIVE TWEAKS
+       ========================= */
+
+    @media (max-width: 600px) {
+      :root {
+        --carousel-height: 300px;
+      }
+      .peek-carousel {
+        margin: 2rem -1.25rem;
+        padding-left: 1.25rem;
+      }
+    }
+    @media (max-width: 480px) {
+      figcaption {
+        font-size: 0.85rem;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-    <h1>Hello 2025</h1>
-    <img src="https://picsum.photos/800/600?random=christmas" alt="Funny Christmas picture">
+  <main>
+    <h1>Parrish Family Update 2025</h1>
+
+    <p class="intro">
+      For those who enjoy a long-form update, here is ours. We hope you enjoy reading it as much as we enjoyed living it.
+    </p>
+
+
+    <figure>
+      <img src="https://lh3.googleusercontent.com/d/1WOp4mA-HIlV71H9w6RwybRpLJ1vkau6V=w1200" alt="" />
+    </figure>
+
+    <p>
+      We moved to the farm in August 2023 and named it _To The Moon_. At the time, Poppy hadn’t been born yet—we weren’t married, had one dog, one cat, and two horses. After the frenzy of moving, we settled into nesting mode, preparing for Poppy’s home birth. While Eva focused on rest and letting her body pour itself into growing Poppy, Jacob learned the honest, grounding labor that comes with caring for horses.
+    </p>
+
+    <figure>
+      <div class="video-wrapper one">
+        <iframe
+          src="https://drive.google.com/file/d/1zmJovVMzKqX57IWFpRyFIe2WV6SUkcCc/preview"
+          loading="lazy"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <figcaption>Morning chores Dec 2023 w/ assistant Mr. Pickles</figcaption>
+    </figure>
+    <p>
+      Poppy arrived right on her due date, January 6th, 2024. She is pure joy—determined, observant, playful, deeply caring, and endlessly curious about animals. She turns two in just a couple of weeks, which somehow feels impossible.
+    </p>
+
+    <figure>
+      <div class="image-row">
+        <img src="https://lh3.googleusercontent.com/d/1X6Kf4jbEWTBsdg2187mHDixjgm3qsMJd=h800" alt="">
+        <img src="https://lh3.googleusercontent.com/d/1JW698s0FUD-9GaujuETKkxv4IDe10g8R=h800" alt="">
+      </div>
+      <figcaption>Baby Poppy and Poppy now</figcaption>
+    </figure>
+
+    <p>
+      Riding the high of Poppy’s birth, we made what felt like a slightly unhinged decision: two weeks later, we added another member to the family. We already had one baby crying—why not two?
+    </p>
+    <figure>
+        <div class="image-row">
+          <img src="https://lh3.googleusercontent.com/d/1wfalC63yvjDNDSTDVYJ-M3vMKng8tkHN=h800" alt="" />
+          <img src="https://lh3.googleusercontent.com/d/15ev7bVhiOGPydPH9iO9wE6GL9z8bri_I=h800" alt="" />
+          <img src="https://lh3.googleusercontent.com/d/1GYlHqJF_0ms4YmIbbasQ-t5QZ6-6N30W=h800" alt="" />
+        </div>
+        <figcaption>Baby Rocket and Rocket now</figcaption>
+    </figure>
+
+    <p>
+      That decision turned out to be a wonderful one. Rocket is a character: smart, energetic, cuddly, and incredibly gentle with Poppy. He somehow manages to be everywhere at once, always keeping tabs on everyone across the farm. Other than eating, his favorite activity is darting through the woods.
+    </p>
+
+    <figure>
+      <img src="https://lh3.googleusercontent.com/d/1uLo2LOiz8BxpyJQ2R8ufYY-V8R61k2eZ=w1200" alt="" />
+      <figcaption>
+        The farm itself continued to grow too. From left to right, we now have geldings Cielo, Red, and Dice, and mares Kiwi and Cherry—each with their own distinct personality and presence.
+      </figcaption>
+    </figure>
+
+    <p>
+      The addition that truly made it feel like a farm, though, was Deh and his hens. Poppy named the rooster “Deh” because it was one of the only words she could say at the time. The chickens roam freely, wreaking havoc on the flower beds, making hilarious noises, and leaving eggs for us to discover. If you don’t have chickens yet, consider this your sign—they’re easy, endlessly entertaining, and the eggs are unbeatable.
+    </p>
+    <figure>
+      <div class="video-wrapper two">
+        <iframe
+          src="https://drive.google.com/file/d/1WVTvJYLBGrMfkHH8lfoOHJ1M0uCxezvw/preview"
+          loading="lazy"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <figcaption>"Deh" crowing and Poppy playing with the chickens.</figcaption>
+    </figure>
+
+    <p>
+      In September, we got married beneath a canopy of redwoods in Big Sur with our parents by our sides. It was a powerful, intimate, and enchanting week filled with love and more happy tears than we can count.
+    </p>
+    <figure class="peek-carousel">
+      <div class="carousel-track">
+
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1rw0mS8wd2dkAUyU7Efv8FcTYNkvWuWlH=w1200" alt="">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1up7tQpQ73o1y8EBqyyYYxFx8RzrUXJHz=w1200" alt="">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1R9A2upAa1KqKO4l_9IIt59_3Qq0CqH8d=w1200" alt="">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1oK5sSgvemI23JZdhy9VNDgKv0xhlpNSJ=w1200" alt="">
+        </div>
+
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1u1xx15BwZHR6Dk_maFGAQjXxba4PyN49=w1200" alt="">
+        </div>
+
+      </div>
+      <figcaption>Swipe or scroll for more pictures.</figcaption>
+    </figure>
+
+    <p>
+      About a month later, we hosted a dinner party at the farm to celebrate with friends. We gathered in the barn and out on a deck in the far field. Despite the blistering cold, it was a beautiful celebration of love, food, friendship, and creative expression.
+    </p>
+    <figure class="peek-carousel">
+      <div class="carousel-track">
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1vHngFWGjk-y6NbThAQ1d2QXhjXF4C70I=h800" alt="">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1V6f6ed_O2tcLcf7aZpmR_UxLjuHz_vl9=h800" alt="">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1AdQVnj3PaBkNpRSQh29aucV0EwA7OgAm=h800" alt="">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1l1ugWTN_CSR9vorlInczMJKbqj7GNDLD=h800" alt="">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1MDE2taLYYsJmPUO0JB4G_R-n1fwRK0H7=h800" alt="">
+        </div>
+        <div class="carousel-slide">
+          <img src="https://lh3.googleusercontent.com/d/1dPqMEifnm3un2BP_QEDV4atXiRhPLOyh=h800" alt="">
+        </div>
+      </div>
+      <figcaption>Swipe or scroll for more pictures.</figcaption>
+    </figure>
+
+
+    <p>
+      Jacob continues to run Bitcoin Charlotte remotely and hosted nearly 100 events throughout 2025. It’s been so energizing to see the community deepen and grow. If you still don’t own any bitcoin, take this as your sign—reach out to Jacob and get off zero! You can also explore our endless resources at BitcoinCharlotte.org.
+    </p>
+    <figure>
+      <img src="https://lh3.googleusercontent.com/d/1r5WwVuZAP3So9bW5QrVFt11vNkiyYFsu=w1200" alt="" />
+      <figcaption>Bitcoin Market September 2025</figcaption>
+    </figure>
+
+    <p>
+      Eva has also been busy—she’s started showing and fully stepped into her journey toward becoming a top-tier hunter. Next year, our family is embracing the road. We’ll spend much of the year showing in Venice, Traverse City, Boone, and close to home at Tryon. We’re excited to live the RV life for months at a time, explore new places, and spend meaningful time with friends and family along the way.
+    </p>
+    <figure>
+      <div class="video-wrapper three">
+        <iframe
+          src="https://drive.google.com/file/d/1r2vO4jmVaHkoB0ODnA-1xWrj2nyKgpW-/preview"
+          loading="lazy"
+          allow="autoplay"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <figcaption>
+        Eva showing Kiwi at Tryon Equestrian Center. Kiwi's registered name is
+        Utopia.
+      </figcaption>
+    </figure>
+
+    <p>
+      Thank you so much for reading and for being part of our lives from near or far. We wish you and yours the very best this holiday season.<br>
+      <br>
+      With love,  <br>
+        The Parrishes
+    </p>
+  </main>
 </body>
 </html>
